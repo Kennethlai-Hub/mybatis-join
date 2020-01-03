@@ -3,18 +3,16 @@ package com.ibranco.mybatis.join.vo;
 import com.ibranco.mybatis.join.domain.User;
 
 public class UserRole extends User {
-    private int id;
+    private int roid;
     private String rname;
     private String desc;
 
-    @Override
-    public int getId() {
-        return id;
+    public int getRoid() {
+        return roid;
     }
 
-    @Override
-    public void setId(int id) {
-        this.id = id;
+    public void setRoid(int roid) {
+        this.roid = roid;
     }
 
     public String getRname() {
@@ -37,7 +35,7 @@ public class UserRole extends User {
     @Override
     public String toString() {
         return "UserRole{" +
-                "id=" + id +
+                "roid=" + roid +
                 ", rname='" + rname + '\'' +
                 ", desc='" + desc + '\'' +
                 '}';

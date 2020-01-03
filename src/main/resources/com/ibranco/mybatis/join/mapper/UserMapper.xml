@@ -8,5 +8,8 @@
     <select id="findAll" resultType="user">
        select * from newuser
     </select>
+    <select id="findAllUserRole" resultType="userrole">
+       select u.*,r.id as roid,r.name as rname,r.desc from newuser u , role r where u.rid = r.id
+    </select>
 
 </mapper>

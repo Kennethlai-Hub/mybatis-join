@@ -4,6 +4,7 @@ import com.ibranco.mybatis.join.domain.Role;
 import com.ibranco.mybatis.join.domain.User;
 import com.ibranco.mybatis.join.mapper.UserMapper;
 import com.ibranco.mybatis.join.mapper.RoleMapper;
+import com.ibranco.mybatis.join.vo.UserRole;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -51,6 +52,13 @@ public class UserTest {
     public void testFindAllRole() {
         List<Role> userList = roleDao.findAll();
         for (Role item :userList){
+            logger.info(item);
+        }
+    }
+    @Test
+    public void testFindAllUserRole() {
+        List<UserRole> userList = userDao.findAllUserRole();
+        for (UserRole item :userList){
             logger.info(item);
         }
     }
