@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface UserMapper {
     List<User> findAll();
+    List<User> findAllUserRole();
     List<User> findByContent(User user);
     List<User> findByContent1(User user);
 }

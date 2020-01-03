@@ -6,13 +6,7 @@ public class User {
     private int id;
     private String username;
     private String password;
-    private String name;
-    private int sex;
-    private int age;
-    private Date credate;
-
-    public User() {
-    }
+    private int rid;
 
     public int getId() {
         return id;
@@ -38,36 +32,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public int getRid() {
+        return rid;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getSex() {
-        return sex;
-    }
-
-    public void setSex(int sex) {
-        this.sex = sex;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Date getCredate() {
-        return credate;
-    }
-
-    public void setCredate(Date credate) {
-        this.credate = credate;
+    public void setRid(int rid) {
+        this.rid = rid;
     }
 
     @Override
@@ -76,10 +46,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", sex=" + sex +
-                ", age=" + age +
-                ", credate=" + credate +
+                ", rid=" + rid +
                 '}';
     }
 }
