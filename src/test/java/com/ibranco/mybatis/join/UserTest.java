@@ -95,5 +95,12 @@ public class UserTest {
             logger.info(item);
         }
     }
+    @Test
+    public void testFindU(){
+        List<User> list = userDao.findUser();
+        for (User item:list){
+            logger.info(item);
+        }
+    }
 
 }

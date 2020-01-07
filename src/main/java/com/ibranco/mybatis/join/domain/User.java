@@ -1,6 +1,7 @@
 package com.ibranco.mybatis.join.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private int id;
@@ -8,6 +9,8 @@ public class User {
     private String password;
     private int rid;
     private String name;
+
+    private List<Account> accounts;
 
     public User() {
     }
@@ -52,6 +55,14 @@ public class User {
         this.rid = rid;
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -60,6 +71,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", rid=" + rid +
                 ", name='" + name + '\'' +
+                ", accounts=" + accounts +
                 '}';
     }
 }

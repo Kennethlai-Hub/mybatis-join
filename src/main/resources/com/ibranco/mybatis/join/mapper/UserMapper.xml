@@ -6,10 +6,26 @@
     <sql id="query">
         select id,username,password,rid from newuser
     </sql>
+    <resultMap id="userMap" type="User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="rid" property="rid"/>
+        <result column="name" property="name"/>
+        <collection property="accounts" ofType="account">
+            <id column="aid" property="id"/>
+            <result column="uid" property="uid"/>
+            <result column="aname" property="name"/>
+            <result column="money" property="money"/>
+        </collection>
+    </resultMap>
     <select id="findAll" resultType="user">
        <include refid="query"/>
     </select>
     <select id="findAllUserRole" resultType="userrole">
        select u.*,r.id as roid,r.name as rname,r.desc from newuser u , role r where u.rid = r.id
+    </select>
+    <select id="findUser" resultMap="userMap">
+        select u.*,a.id as aid,a.uid,a.name as aname,a.money from newuser u left join account a on u.id = a.uid
     </select>
 </mapper>
