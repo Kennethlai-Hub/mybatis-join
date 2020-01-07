@@ -10,6 +10,7 @@ public interface UserMapper {
     List<UserRole> findAllUserRole();
     List<User> findByContent(User user);
     List<User> findByContent1(User user);
+    List<User> findUserAndRole();
 
     /**
      * 查询所有用户信息以及所有的帐户列表

@@ -12,6 +12,8 @@ public class User {
 
     private List<Account> accounts;
 
+    private List<Role> roles;
+
     public User() {
     }
 
@@ -21,6 +23,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public String getUsername() {
@@ -59,6 +69,7 @@ public class User {
         return accounts;
     }
 
+
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
@@ -72,6 +83,7 @@ public class User {
                 ", rid=" + rid +
                 ", name='" + name + '\'' +
                 ", accounts=" + accounts +
+                ", roles=" + roles +
                 '}';
     }
 }

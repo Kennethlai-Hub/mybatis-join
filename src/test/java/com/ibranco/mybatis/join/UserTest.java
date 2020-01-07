@@ -26,7 +26,7 @@ public class UserTest {
     private InputStream inputStream;
     private SqlSession sqlSession;
     private UserMapper userDao;
-    private RoleMapper roleDao;
+    private RoleMapper roleMapper;
     private AccountMapper accountMapper;
 
     @Before
@@ -36,7 +36,7 @@ public class UserTest {
         SqlSessionFactory sqlSessionFactory = builder.build(inputStream);
         sqlSession = sqlSessionFactory.openSession(true);
         userDao = sqlSession.getMapper(UserMapper.class);
-        roleDao = sqlSession.getMapper(RoleMapper.class);
+        roleMapper= sqlSession.getMapper(RoleMapper.class);
         accountMapper = sqlSession.getMapper(AccountMapper.class);
     }
     @After
@@ -55,7 +55,7 @@ public class UserTest {
     }
     @Test
     public void testFindAllRole() {
-        List<Role> userList = roleDao.findAll();
+        List<Role> userList = roleMapper.findAll();
         for (Role item :userList){
             logger.info(item);
         }
@@ -103,4 +103,19 @@ public class UserTest {
         }
     }
 
+    @Test
+    public void testFindRoleUser(){
+        List<Role> list = roleMapper.findRoleAndUsers();
+        for (Role item:list){
+            logger.info(item);
+        }
+    }
+    @Test
+    public void testfindUserAndRole(){
+
+        List<User> list = userDao.findUserAndRole();
+        for(User item:list){
+            logger.info(item);
+        }
+    }
 }

@@ -19,6 +19,18 @@
             <result column="money" property="money"/>
         </collection>
     </resultMap>
+    <resultMap id="userRole" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="rid" property="rid"/>
+        <result column="name" property="name"/>
+        <collection property="roles" ofType="role">
+            <id column="roleId" property="id"/>
+            <result column="roleName" property="name"/>
+            <result column="desc" property="desc"/>
+        </collection>
+    </resultMap>
     <select id="findAll" resultType="user">
        <include refid="query"/>
     </select>
@@ -27,5 +39,8 @@
     </select>
     <select id="findUser" resultMap="userMap">
         select u.*,a.id as aid,a.uid,a.name as aname,a.money from newuser u left join account a on u.id = a.uid
+    </select>
+    <select id="findUserAndRole" resultMap="userRole">
+        select u.*,r.id as roleId,r.name as roleName,r.desc from newuser u LEFT OUTER JOIN user_role ur on u.id = ur.uid LEFT OUTER JOIN role r on r.id = ur.rid
     </select>
 </mapper>

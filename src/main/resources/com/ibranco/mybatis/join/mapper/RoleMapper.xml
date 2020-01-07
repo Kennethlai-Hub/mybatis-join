@@ -5,8 +5,26 @@
 <mapper namespace="com.ibranco.mybatis.join.mapper.RoleMapper">
 
 
+    <sql id="query">
+        select * from role
+    </sql>
+    <resultMap id="roleMap" type="role">
+        <id column="roleId" property="id"/>
+        <result column="roleName" property="name"/>
+        <result column="desc" property="desc"/>
+        <collection property="users" ofType="user">
+            <id column="id" property="id"/>
+            <result column="username" property="username"/>
+            <result column="password" property="password"/>
+            <result column="rid" property="rid"/>
+            <result column="name" property="name"/>
+        </collection>
+    </resultMap>
     <select id="findAll" resultType="role">
-       select * from role
+       <include refid="query"/>
+    </select>
+    <select id="findRoleAndUsers" resultMap="roleMap">
+    select u.*,r.id as roleId,r.name as roleName,r.desc from role r LEFT OUTER JOIN user_role ur on r.id = ur.rid LEFT OUTER JOIN newuser u on u.id = ur.uid
     </select>
 
 </mapper>

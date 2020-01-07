@@ -1,9 +1,21 @@
 package com.ibranco.mybatis.join.domain;
 
+import java.util.List;
+
 public class Role {
     private int id;
     private String name;
     private String desc;
+
+    private List<User> users;
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     public int getId() {
         return id;
@@ -35,6 +47,7 @@ public class Role {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", desc='" + desc + '\'' +
+                ", users=" + users +
                 '}';
     }
 }
