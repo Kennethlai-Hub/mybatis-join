@@ -7,6 +7,10 @@ public class User {
     private String username;
     private String password;
     private int rid;
+    private String name;
+
+    public User() {
+    }
 
     public int getId() {
         return id;
@@ -32,6 +36,14 @@ public class User {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getRid() {
         return rid;
     }
@@ -47,6 +59,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", rid=" + rid +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

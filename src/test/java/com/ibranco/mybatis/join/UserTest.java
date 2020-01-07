@@ -1,9 +1,12 @@
 package com.ibranco.mybatis.join;
 
+import com.ibranco.mybatis.join.domain.Account;
 import com.ibranco.mybatis.join.domain.Role;
 import com.ibranco.mybatis.join.domain.User;
+import com.ibranco.mybatis.join.mapper.AccountMapper;
 import com.ibranco.mybatis.join.mapper.UserMapper;
 import com.ibranco.mybatis.join.mapper.RoleMapper;
+import com.ibranco.mybatis.join.vo.AccountUser;
 import com.ibranco.mybatis.join.vo.UserRole;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -24,6 +27,7 @@ public class UserTest {
     private SqlSession sqlSession;
     private UserMapper userDao;
     private RoleMapper roleDao;
+    private AccountMapper accountMapper;
 
     @Before
     public void init() throws IOException {
@@ -33,6 +37,7 @@ public class UserTest {
         sqlSession = sqlSessionFactory.openSession(true);
         userDao = sqlSession.getMapper(UserMapper.class);
         roleDao = sqlSession.getMapper(RoleMapper.class);
+        accountMapper = sqlSession.getMapper(AccountMapper.class);
     }
     @After
     public void destory() throws IOException {
@@ -59,6 +64,34 @@ public class UserTest {
     public void testFindAllUserRole() {
         List<UserRole> userList = userDao.findAllUserRole();
         for (UserRole item :userList){
+            logger.info(item);
+        }
+    }
+    @Test
+    public void testAccountAll(){
+        List<Account> accountList = accountMapper.findAll();
+        for(Account item:accountList){
+            logger.info(item);
+        }
+    }
+    @Test
+    public void testAccounUser(){
+        List<AccountUser> accountList = accountMapper.findAccountUser();
+        for(AccountUser item:accountList){
+            logger.info(item);
+        }
+    }
+    @Test
+    public void testFindAU(){
+        List<Account> list = accountMapper.findAU();
+        for (Account item:list){
+            logger.info(item);
+        }
+    }
+    @Test
+    public void testFindUA(){
+        List<Account> list = accountMapper.findUA();
+        for (Account item:list){
             logger.info(item);
         }
     }

@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ibranco.mybatis.join.mapper.UserMapper">
-
-
+    <sql id="query">
+        select id,username,password,rid from newuser
+    </sql>
     <select id="findAll" resultType="user">
-       select * from newuser
+       <include refid="query"/>
     </select>
     <select id="findAllUserRole" resultType="userrole">
        select u.*,r.id as roid,r.name as rname,r.desc from newuser u , role r where u.rid = r.id
     </select>
-
 </mapper>
